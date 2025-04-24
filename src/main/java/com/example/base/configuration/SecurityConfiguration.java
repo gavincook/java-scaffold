@@ -19,6 +19,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/auth/login").permitAll() // 登录接口不需要认证
                         .requestMatchers("/api/**").hasRole("USER")
                         .anyRequest().authenticated() // 其他请求需要认证
                 )

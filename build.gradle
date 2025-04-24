@@ -20,11 +20,6 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
-    checkstyle {
-        resolutionStrategy.capabilitiesResolution.withCapability("com.google.collections:google-collections") {
-            select("com.google.guava:guava:0")
-        }
-    }
 }
 
 repositories {
@@ -34,6 +29,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 
     // Liquibase
     implementation 'org.liquibase:liquibase-core'

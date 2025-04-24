@@ -11,7 +11,7 @@ import java.util.Objects;
 @Setter
 public class UserVo {
     private String id;
-    private String name;
+    private String username;
     private String email;
     private Instant createdAt;
     private Instant updatedAt;
@@ -23,7 +23,7 @@ public class UserVo {
 
         UserVo response = new UserVo();
         response.setId(user.getId());
-        response.setName(user.getName());
+        response.setUsername(user.getUsername());
         response.setEmail(user.getEmail());
         response.setCreatedAt(user.getCreatedAt());
         response.setUpdatedAt(user.getUpdatedAt());
