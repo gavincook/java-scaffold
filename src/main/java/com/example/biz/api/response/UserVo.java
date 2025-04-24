@@ -17,7 +17,9 @@ public class UserVo {
     private Instant updatedAt;
 
     public static UserVo of(User user) {
-        if (Objects.isNull(user)) return null;
+        if (Objects.isNull(user)) {
+            return null;
+        }
 
         UserVo response = new UserVo();
         response.setId(user.getId());
