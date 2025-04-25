@@ -33,9 +33,13 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
                 // Set user in context
                 SecurityContextHolder.getContext()
                         .setAuthentication(new UsernamePasswordAuthenticationToken(user, null, null));
+                CurrentUserHolder.setUser(user);
             }
         }
-
-        filterChain.doFilter(request, response);
+        try {
+            filterChain.doFilter(request, response);
+        } finally {
+            CurrentUserHolder.clear();
+        }
     }
 }

@@ -36,4 +36,8 @@ public class UserApplicationService {
     public User getUserByToken(String token) {
         return cacheHelper.getCache(CacheName.TOKEN).get(token, User.class);
     }
+
+    public void logout(String token) {
+        cacheHelper.getCache(CacheName.TOKEN).evict(token);
+    }
 }
