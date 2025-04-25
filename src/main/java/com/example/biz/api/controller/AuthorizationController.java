@@ -22,6 +22,9 @@ public class AuthorizationController {
     @PostMapping("/login")
     public CommonResponse<String> login(@RequestBody @Valid LoginCommand loginCommand) {
         String token = userApplicationService.login(loginCommand);
+        if (true) {
+            throw new RuntimeException("Login failed");
+        }
         return CommonResponse.success(token);
     }
 

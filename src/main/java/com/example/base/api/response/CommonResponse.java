@@ -21,4 +21,11 @@ public class CommonResponse<T> {
     public static <T> CommonResponse<T> success() {
         return success(null);
     }
+
+    public static CommonResponse<Void> failed(String message) {
+        CommonResponse<Void> result = new CommonResponse<>();
+        result.setCode(CommonResponseCode.FAILED);
+        result.setMessage(message);
+        return result;
+    }
 }
