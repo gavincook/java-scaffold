@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class CommonResponse<T> {
-    private ResponseCode code;
+    private String code;
 
     private String message;
 
@@ -13,7 +13,7 @@ public class CommonResponse<T> {
 
     public static <T> CommonResponse<T> success(T data) {
         CommonResponse<T> result = new CommonResponse<>();
-        result.setCode(SuccessCode.SUCCESS);
+        result.setCode(SuccessCode.SUCCESS.getCode());
         result.setMessage(SuccessCode.SUCCESS.getMessage());
         result.setData(data);
         return result;
@@ -25,21 +25,21 @@ public class CommonResponse<T> {
 
     public static CommonResponse<Void> failed(String message) {
         CommonResponse<Void> result = new CommonResponse<>();
-        result.setCode(ErrorCode.FAILED);
+        result.setCode(ErrorCode.FAILED.getCode());
         result.setMessage(message);
         return result;
     }
 
     public static CommonResponse<Void> failed(ErrorCode errorCode) {
         CommonResponse<Void> result = new CommonResponse<>();
-        result.setCode(errorCode);
+        result.setCode(errorCode.getCode());
         result.setMessage(errorCode.getMessage());
         return result;
     }
 
     public static CommonResponse<Void> failed(ErrorCode errorCode, String message) {
         CommonResponse<Void> result = new CommonResponse<>();
-        result.setCode(errorCode);
+        result.setCode(errorCode.getCode());
         result.setMessage(message);
         return result;
     }
