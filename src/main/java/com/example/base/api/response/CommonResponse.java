@@ -1,10 +1,11 @@
 package com.example.base.api.response;
 
+import com.example.base.exception.ErrorCode;
 import lombok.Data;
 
 @Data
 public class CommonResponse<T> {
-    private CommonResponseCode code;
+    private ResponseCode code;
 
     private String message;
 
@@ -12,8 +13,8 @@ public class CommonResponse<T> {
 
     public static <T> CommonResponse<T> success(T data) {
         CommonResponse<T> result = new CommonResponse<>();
-        result.setCode(CommonResponseCode.SUCCESS);
-        result.setMessage(CommonResponseCode.SUCCESS.getMessage());
+        result.setCode(SuccessCode.SUCCESS);
+        result.setMessage(SuccessCode.SUCCESS.getMessage());
         result.setData(data);
         return result;
     }
@@ -24,7 +25,21 @@ public class CommonResponse<T> {
 
     public static CommonResponse<Void> failed(String message) {
         CommonResponse<Void> result = new CommonResponse<>();
-        result.setCode(CommonResponseCode.FAILED);
+        result.setCode(ErrorCode.FAILED);
+        result.setMessage(message);
+        return result;
+    }
+
+    public static CommonResponse<Void> failed(ErrorCode errorCode) {
+        CommonResponse<Void> result = new CommonResponse<>();
+        result.setCode(errorCode);
+        result.setMessage(errorCode.getMessage());
+        return result;
+    }
+
+    public static CommonResponse<Void> failed(ErrorCode errorCode, String message) {
+        CommonResponse<Void> result = new CommonResponse<>();
+        result.setCode(errorCode);
         result.setMessage(message);
         return result;
     }

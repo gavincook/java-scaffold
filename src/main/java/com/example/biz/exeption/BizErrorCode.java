@@ -1,9 +1,9 @@
 package com.example.biz.exeption;
 
-import com.example.base.exception.ErrorCode;
+import com.example.base.api.response.ResponseCode;
 import org.springframework.http.HttpStatus;
 
-public enum BizErrorCode implements ErrorCode {
+public enum BizErrorCode implements ResponseCode {
 
     ;
 
